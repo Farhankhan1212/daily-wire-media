@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-ink dark:text-paper transition-colors duration-300;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-crimson text-white;
+  }
+  *:focus-visible {
+    outline: 2px solid #C81E2C;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-outline {
+    @apply border border-ink/20 dark:border-paper/20 hover:border-crimson hover:text-crimson px-5 py-2.5 rounded-sm font-semibold text-sm transition-colors;
+  }
+  .input-field {
+    @apply w-full bg-transparent border border-ink/15 dark:border-paper/20 rounded-sm px-3 py-2 text-sm focus:border-crimson outline-none;
+  }
+  .card-shadow {
+    @apply shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] transition-shadow duration-300;
+  }
+}
+
+/* Quill editor dark-mode friendly overrides */
+.ql-toolbar {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+.ql-container {
+  border-color: rgba(0,0,0,0.1) !important;
+  min-height: 240px;
+  font-family: 'Inter', sans-serif;
+}
+
+.news-content img {
+  border-radius: 2px;
+  margin: 1.5rem 0;
+}
+.news-content h2, .news-content h3 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.news-content p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
