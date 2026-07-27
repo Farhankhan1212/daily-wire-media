@@ -49,6 +49,12 @@ app.use("/api/categories", categoryRoutes);
 app.use("/api/tags", tagRoutes);
 app.use("/api/subscribers", subscriberRoutes);
 
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Daily Wire Media Backend API is running 🚀",
+  });
+});
 // SEO helpers
 app.get("/robots.txt", (req, res) => {
   res.type("text/plain").send(
