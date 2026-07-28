@@ -21,10 +21,20 @@ const News = require("./models/News");
 const app = express();
 
 // Security middleware
-app.use(helmet());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://daily-wire-media.vercel.app",
+  "https://daily-wire-media-m1gp56yko-farhankhan1212s-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
