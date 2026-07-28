@@ -27,9 +27,15 @@ const CategoryPage = () => {
         const match = catData.categories.find((c) => c.slug === slug);
         setCategory(match || { name: slug.replace(/-/g, " ") });
 
-        const params = { page, limit: 12 };
-        if (match) params.category = match._id;
-        if (sortAuthor) params.author = sortAuthor;
+     const params = { page, limit: 12 };
+
+if (match) {
+  params.category = match.slug;
+}
+
+if (sortAuthor) {
+  params.author = sortAuthor;
+}
 
         const { data } = await fetchNews(params);
         setNews(data.news);
