@@ -48,14 +48,38 @@ const getNews = async (req, res, next) => {
 
     const query = {};
 
-    if (!all) {
-      query.status = "published";
-      query.$or = [{ expiryDate: null }, { expiryDate: { $gt: new Date() } }];
-    } else if (status) {
-      query.status = status;
-    }
+   if (!all) {
+  query.status = "published";
+  query.$or = [
+    { expiryDate: null },
+    { expiryDate: { $gt: new Date() } },
+  ];
+} else if (status) {
+  query.status = status;
+}
+if (category) {
+  const cat = await Category.findOne({
+    $or: [
+      { name: category },
+      { slug: category.toLowerCase().replace(/\s+/g, "-") },
+    ],
+  });
 
-    if (category) query.category = category;
+  if (cat) {
+    query.category = cat._id;
+  } else {
+    return res.json({
+      success: true,
+      count: 0,
+      total: 0,
+      page: Number(page),
+      pages: 0,
+      news: [],
+    });
+  }
+}
+
+  
     if (author) query.author = { $regex: author, $options: "i" };
     if (tag) query.tags = tag;
     if (breaking) query.breaking = breaking === "true";
