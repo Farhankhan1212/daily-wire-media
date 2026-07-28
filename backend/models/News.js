@@ -3,7 +3,7 @@ const slugify = require("slugify");
 
 const newsSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true, trim: true, maxlength: 200 },
+    title: { type: String, required: true, trim: true, maxlength: 500 },
     slug: { type: String, unique: true, index: true },
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true },
     description: { type: String, required: true, maxlength: 400 }, // short description
@@ -80,7 +80,7 @@ newsSchema.pre("validate", function (next) {
 // Virtual: estimated reading time (200 wpm)
 newsSchema.virtual("readingTime").get(function () {
   const words = (this.content || "").replace(/<[^>]+>/g, "").split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 200));
+  return Math.max(1, Math.ceil(words / 1000));
 });
 
 newsSchema.set("toJSON", { virtuals: true });
