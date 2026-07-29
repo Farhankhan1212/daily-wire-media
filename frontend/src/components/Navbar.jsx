@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 import { searchSuggestions } from "../services/api";
 
 const categories = [
-  "Technology", "Politics", "Business", "Sports", "Education", "Health", "Entertainment", "World News",
+  "Technology", "Politics", "Business", "Sports", "Education", "Health", "Entertainment", "World",
 ];
 
 const Navbar = () => {
