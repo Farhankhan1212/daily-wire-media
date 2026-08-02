@@ -1,12 +1,12 @@
 require("dotenv").config();
 const startNewsCron = require("./jobs/newsCron");
-const express = require("express");
-const cors = require("cors");
+const express = require("express"); 
+const cors = require("cors"); 
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
-
+const aiRoutes = require("./routes/aiRoutes");
 const connectDB = require("./config/db");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const { startAutoDeleteJob } = require("./jobs/autoDeleteJob");
@@ -58,7 +58,7 @@ app.use("/api/news", newsRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/tags", tagRoutes);
 app.use("/api/subscribers", subscriberRoutes);
-
+app.use("/api/ai", aiRoutes);
 app.get("/", (req, res) => {
   res.json({
     success: true,

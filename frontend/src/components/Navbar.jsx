@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiSun, FiMoon, FiSearch, FiMenu, FiX, FiBookmark } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
-import { searchSuggestions } from "../services/api";
+import { searchSuggestions, aiSearch } from "../services/api";
 
 const categories = [
   "Technology", "Politics", "Business", "Sports", "Education", "Health", "Entertainment", "World",
