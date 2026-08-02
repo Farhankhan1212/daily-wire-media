@@ -49,5 +49,7 @@ export const fetchTags = () => api.get("/tags");
 
 // --- Subscribers ---
 export const subscribeNewsletter = (email) => api.post("/subscribers", { email });
+export const aiSearch = (query) =>
+  api.post("/ai/search", { query });
 
 export default api;

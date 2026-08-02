@@ -21,18 +21,14 @@ const SearchResults = () => {
       setLoading(true);
 
       try {
-        // Agar AI Search se results aaye hain to unhe use karo
         if (aiResults) {
           setNews(aiResults);
-          return;
-        }
-
-        // AI Search
-        if (q) {
+        } else if (q) {
+          // AI Search
           const { data } = await aiSearch(q);
           setNews(data.news || []);
         } else {
-          // Normal Search fallback
+          // Normal Search
           const { data } = await fetchNews({
             search: q,
             limit: 20,
@@ -68,10 +64,7 @@ const SearchResults = () => {
           ))
         ) : news.length ? (
           news.map((n) => (
-            <NewsCard
-              key={n._id}
-              news={n}
-            />
+            <NewsCard key={n._id} news={n} />
           ))
         ) : (
           <p className="col-span-full text-center text-slate-650 py-16">
