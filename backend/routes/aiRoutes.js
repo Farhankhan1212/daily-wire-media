@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("/search", (req, res) => {
+const { aiSearch } = require("../controllers/aiController");
+
+router.get("/", (req, res) => {
   res.json({
     success: true,
-    method: req.method,
-    body: req.body,
+    message: "AI Route Working",
   });
 });
+
+router.post("/search", aiSearch);
 
 module.exports = router;
