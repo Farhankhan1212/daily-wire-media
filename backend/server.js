@@ -2,6 +2,7 @@ require("dotenv").config();
 const startNewsCron = require("./jobs/newsCron");
 const express = require("express"); 
 const cors = require("cors"); 
+const chatRoutes = require("./routes/chatRoutes");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
@@ -53,6 +54,7 @@ const apiLimiter = rateLimit({
 app.use("/api", apiLimiter);
 
 // Routes
+app.use("/api/chat", chatRoutes);
 app.use("/api/admin", authRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/categories", categoryRoutes);

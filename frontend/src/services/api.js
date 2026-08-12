@@ -43,10 +43,14 @@ export const deleteNews = (id) => api.delete(`/news/${id}`);
 export const fetchCategories = () => api.get("/categories");
 export const createCategory = (data) => api.post("/categories", data);
 export const deleteCategory = (id) => api.delete(`/categories/${id}`);
-
+export const chatWithAI = (data) =>
+  api.post("/chat", data);
 // --- Tags ---
 export const fetchTags = () => api.get("/tags");
-
+export const fetchWeather = (city) =>
+  api.get("/weather", {
+    params: { city },
+  });
 // --- Subscribers ---
 export const subscribeNewsletter = (email) => api.post("/subscribers", { email });
 export const aiSearch = (query) =>
