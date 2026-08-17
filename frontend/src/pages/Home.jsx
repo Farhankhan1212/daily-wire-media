@@ -9,7 +9,7 @@ import SectionHeader from "../components/SectionHeader";
 import Newsletter from "../components/Newsletter";
 import { CardSkeleton } from "../components/Loaders";
 
-const CATS = ["Technology", "Politics", "Business", "Sports", "Education", "Health", "Entertainment", " News"];World
+const CATS = ["Technology", "Politics", "Business", "Sports", "Education", "Health", "Entertainment", " News","World"];
 
 const Home = () => {
   const [breaking, setBreaking] = useState([]);

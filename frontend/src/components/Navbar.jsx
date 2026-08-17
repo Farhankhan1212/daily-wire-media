@@ -73,7 +73,7 @@ const Navbar = () => {
           <h1 className="font-display font-extrabold text-3xl md:text-4xl tracking-tight">
             The Daily <span className="text-crimson">Wire Desk</span>
           </h1>
-          <p className="dateline mt-0.5 hidden md:block">Independent · Fact-Checked · Since 2026</p>
+          <p className="dateline mt-0.5 hidden md:block"></p>
         </Link>
 
         <div className="flex items-center gap-3">
